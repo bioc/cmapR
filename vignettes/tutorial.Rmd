@@ -213,10 +213,8 @@ vemurafenib_ds3_melted <- melt_gct(vemurafenib_ds3)
 
 ```{r}
 # plot the matrix values grouped by gene
-library(ggplot2)
-ggplot(vemurafenib_ds3_melted, aes(x=pr_gene_symbol, y=value)) +
-  geom_boxplot() +
-  theme(axis.text.x = element_text(angle=45, hjust=1, vjust=1))
+grps <- with(vemurafenib_ds3_melted, split(value, pr_gene_symbol))
+boxplot(grps)
 ```
 
 
